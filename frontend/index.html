@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attention Triage & Micro-Planner | ADK Agent</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <header class="hero">
+        <nav class="top-nav">
+            <div class="logo">
+                <span class="gradient-text">GenAI APAC Challenge 2026</span>
+            </div>
+            <div class="tech-stack">
+                <span class="badge badge-outline">Google ADK</span>
+                <span class="badge badge-outline">Gemini 2.5 Flash</span>
+                <span class="badge badge-outline">Cloud Run</span>
+            </div>
+        </nav>
+        <h1 class="main-title">Attention <span class="gradient-text">Triage</span> <br> & Micro-Planner</h1>
+        <p class="subtitle">
+            Drowning in digital noise? This intelligent workflow agent ingests your messy emails, chats, and notes, and instantly transforms them into a prioritized, time-aware micro-action plan. Powered by Google Agent Development Kit.
+        </p>
+    </header>
+
+    <main class="app-container">
+        <!-- Left Panel: Input -->
+        <section class="panel input-panel glass-card">
+            <div class="panel-header">
+                <h2>1. Input Stream</h2>
+                <p>Paste your chaotic inbox or select an example below.</p>
+            </div>
+            
+            <div class="example-buttons">
+                <button class="btn btn-secondary" id="btn-example-1">Try: Work Overload</button>
+                <button class="btn btn-secondary" id="btn-example-2">Try: Mixed Contexts</button>
+            </div>
+
+            <textarea id="inbox-input" placeholder="e.g., 1) Email from HR... 2) WhatsApp: Mom asking about..." spellcheck="false"></textarea>
+            
+            <button id="btn-analyze" class="btn btn-primary">
+                <span class="btn-text">Triage My Inbox</span>
+                <span class="loader hidden" id="loading-spinner"></span>
+            </button>
+        </section>
+
+        <!-- Right Panel: Output -->
+        <section class="panel output-panel glass-card">
+            <div class="panel-header">
+                <h2>2. Actionable Plan</h2>
+                <p>Segmented, classified, and prioritized by the Agent.</p>
+            </div>
+
+            <!-- Error Banner -->
+            <div id="error-banner" class="error-banner hidden">
+                <div class="error-banner-icon">⚠️</div>
+                <div class="error-banner-content">
+                    <h4 id="error-title">Analysis Interrupted</h4>
+                    <p id="error-message"></p>
+                </div>
+                <button id="btn-error-close" class="error-banner-close">&times;</button>
+            </div>
+
+            <div id="empty-state" class="empty-state">
+                <div class="icon-placeholder">✨</div>
+                <p>Your micro-plan will appear here</p>
+            </div>
+
+            <div id="results-container" class="results-container hidden">
+                <!-- High Level Summary -->
+                <div class="summary-card">
+                    <h3 class="gradient-text">Daily Summary</h3>
+                    <p id="plan-summary-text"></p>
+                    <div class="metrics">
+                        <div class="metric-box urgency-high">
+                            <span class="metric-value" id="must-do-count">0</span>
+                            <span class="metric-label">Must Do Today</span>
+                        </div>
+                        <div class="metric-box urgency-low">
+                            <span class="metric-value" id="defer-count">0</span>
+                            <span class="metric-label">Can Defer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Triaged Items List -->
+                <div class="items-header">
+                    <h3>Triaged Items</h3>
+                </div>
+                <div id="items-list" class="items-list">
+                    <!-- Items injected by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Full-width Panel for ADK UI -->
+    <div class="trace-wrapper">
+        <section class="panel trace-panel glass-card">
+            <div class="panel-header trace-header">
+                <h2>3. Agent Telemetry & Internal State (ADK UI)</h2>
+                <p>Explore the internal workflow, sub-agent handoffs, and traces in real-time.</p>
+                <a href="https://attention-triage-agent-967518492968.us-central1.run.app/" target="_blank" class="btn-secondary link-btn">Open in New Tab</a>
+            </div>
+            <div class="iframe-container">
+                <iframe src="https://attention-triage-agent-967518492968.us-central1.run.app/" title="ADK Web UI"></iframe>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
